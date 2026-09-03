@@ -14,7 +14,11 @@ def set_seed(seed):
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
 
-def train_and_eval(d, N, p, epochs=350, lr=0.01, batch_size=1024):
+# Function signature me seed=None add kar do:
+def train_and_eval(d, N, p, epochs=350, lr=0.01, batch_size=1024, seed=None):
+    if seed is not None:
+        set_seed(seed)
+
     """
     Real Bilinear Query-Key Superposition Optimization
     A = X^T X / B (Ground truth feature correlation)
